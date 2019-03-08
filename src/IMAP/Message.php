@@ -352,7 +352,13 @@ class Message {
                         $date .= 'C';
                         break;
                 }
-                $this->date = Carbon::parse($date);
+                try 
+                {
+                    $this->date = Carbon::parse($date);
+                } catch (\Exception $e)
+                {
+                    $this->date = Carbon::parse(date('Y-m-d'));
+                }
             }
         }
 
